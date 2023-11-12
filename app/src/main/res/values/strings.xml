@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">AppTecsite</string>
+    <string name="app_name">apptecsite</string>
+    <string name="reserva_polideportivos">Reserva Polideportivos</string>
+    <string name="reserva_laboratorios">Reserva Laboratorios</string>
+    <string name="tecsite_2023">Tecsite-2023</string>
+    <string name="todo">TODO</string>
+    <string name="bienvenido_user">Bienvenido, (user)</string>
+    <string name="tecsite">Tecsite</string>
 </resources>
