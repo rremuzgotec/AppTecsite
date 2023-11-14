@@ -1,125 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="ExtraText">
 
-    <!-- Logo y nombre del sitio -->
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="77dp"
+        android:layout_height="53dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="665dp"
-        android:layout_marginEnd="319dp"
-        android:layout_marginBottom="29dp"
-        app:srcCompat="@drawable/logotecsup"
-        android:contentDescription="TODO" />
-
-    <!-- Imagen y botón de Reserva Polideportivos -->
-
-    <!-- Botón de Reserva Laboratorios -->
-
-    <!-- Texto Tecsite-2023 en la parte inferior izquierda -->
-
-    <ImageView
-        android:id="@+id/logoId"
-        android:layout_width="57dp"
-        android:layout_height="33dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="227dp"
-        android:layout_marginBottom="684dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/logotecsup" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_below="@id/logoId"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="73dp"
-        android:layout_marginEnd="123dp"
-        android:layout_marginBottom="633dp"
-        android:text="@string/bienvenido_user"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="234dp"
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/logotecsup" />
 
     <ImageView
         android:id="@+id/imagenPolideportivoId"
-        android:layout_width="311dp"
-        android:layout_height="145dp"
+        android:layout_width="wrap_content"
+        android:layout_height="151dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="389dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="208dp"
+        android:contentDescription="TODO"
         android:scaleType="centerCrop"
         android:src="@drawable/laboratorios"
         app:srcCompat="@drawable/laboratorios"
-        tools:ignore="UnknownId,ImageContrastCheck"
-        android:contentDescription="TODO" />
+        tools:ignore="UnknownId,ImageContrastCheck" />
 
     <Button
-        android:layout_width="370dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="140dp"
+        android:onClick="irAReservaLaboratorios"
+        android:text="@string/reserva_laboratorios" />
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="578dp"
-        android:layout_marginEnd="33dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="308dp"
+        android:layout_marginEnd="35dp"
         android:onClick="irAReservaPolideportivos"
         android:text="@string/reserva_polideportivos" />
-
 
     <ImageView
         android:id="@+id/imagenLaboratoriosId"
         android:layout_width="wrap_content"
-        android:layout_height="136dp"
+        android:layout_height="157dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="121dp"
-        android:layout_marginEnd="48dp"
-        android:contentDescription="TODO"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="133dp"
+        android:layout_marginEnd="51dp"
         android:scaleType="centerCrop"
         android:src="@drawable/polideportivo"
         app:srcCompat="@drawable/polideportivo"
         tools:ignore="UnknownId" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
+
+
+    <ImageView
+        android:id="@+id/logoId"
+        android:layout_width="55dp"
+        android:layout_height="47dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="298dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="381dp"
-        android:minHeight="48dp"
-        android:onClick="irAReservaLaboratorios"
-        android:text="@string/reserva_laboratorios"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="345dp"
+        android:layout_marginBottom="22dp"
+        android:contentDescription="@string/todo"
+        app:srcCompat="@drawable/logotecsup" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:layout_above="@id/tecsupText"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="77dp"
         android:background="@drawable/sombreado_linea"
@@ -130,36 +104,36 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:layout_above="@id/tecsupText"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="671dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="102dp"
         android:background="@drawable/sombreado_linea"
         android:padding="8dp"
         tools:ignore="UnknownId" />
 
     <TextView
-        android:layout_width="129dp"
-        android:layout_height="21dp"
+        android:id="@+id/textView"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="674dp"
-        android:layout_marginEnd="207dp"
-        android:layout_marginBottom="36dp"
-        android:text="@string/tecsite_2023" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="153dp"
-        android:layout_marginBottom="687dp"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="148dp"
         android:text="@string/tecsite"
         android:textSize="24sp" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="197dp"
+        android:layout_marginBottom="31dp"
+        android:text="@string/tecsite_2023"
+        android:textSize="20sp" />
 
 </RelativeLayout>
-
