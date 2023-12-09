@@ -1,13 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+    <!-- Título -->
     <TextView
+        android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reserva Polideportivos"
-        android:textSize="24sp" />
+        android:text="Reserva de Polideportivos"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Pregunta -->
+    <TextView
+        android:id="@+id/tvPregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Qué deseas reservar?"
+        android:textSize="18sp"
+        android:layout_below="@id/tvTitulo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Lista de opciones -->
+    <RadioGroup
+        android:id="@+id/opcionesReserva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPregunta"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rbBasketball"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basketball" />
+
+        <RadioButton
+            android:id="@+id/rbFutbol1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Futbol1" />
+
+        <RadioButton
+            android:id="@+id/rbFutbol2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Futbol2" />
+
+        <RadioButton
+            android:id="@+id/rbFronton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fronton" />
+
+        <RadioButton
+            android:id="@+id/rbVoley"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voley" />
+
+        <RadioButton
+            android:id="@+id/rbPingPong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PingPong" />
+
+    </RadioGroup>
+
+    <!-- Campos para fecha y hora -->
+    <EditText
+        android:id="@+id/etFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Fecha de Reserva (dd/mm/yyyy)"
+        android:inputType="date"
+        android:layout_below="@id/opcionesReserva"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hora de Reserva (HH:mm)"
+        android:inputType="time"
+        android:layout_below="@id/etFecha"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvIngreseCodigoEstudiante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrese su código de estudiante"
+        android:textSize="18sp"
+        android:layout_below="@id/etHora"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etCodigoEstudiante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Código de Estudiante (8 dígitos)"
+        android:inputType="number"
+        android:maxLength="8"
+        android:layout_below="@id/tvIngreseCodigoEstudiante"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Título para el DNI -->
+    <TextView
+        android:id="@+id/tvIngreseDNI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrese su DNI"
+        android:textSize="18sp"
+        android:layout_below="@id/etCodigoEstudiante"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Campo para ingresar el DNI -->
+    <EditText
+        android:id="@+id/etDNI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Número de DNI"
+        android:inputType="number"
+        android:maxLength="8"
+        android:layout_below="@id/tvIngreseDNI"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Botón Confirmar Reserva -->
+    <Button
+        android:id="@+id/btnConfirmarReserva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar Reserva"
+        android:layout_below="@id/etDNI"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"/>
+
 </RelativeLayout>
+</ScrollView>

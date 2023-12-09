@@ -8,6 +8,16 @@
     tools:ignore="ExtraText">
 
 
+    <Button
+        android:id="@+id/btnMisReservas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/imageView"
+        android:layout_marginTop="40dp"
+        android:text="Mis Reservas"
+        android:onClick="irAMisReservas" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="77dp"
@@ -15,9 +25,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="34dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="234dp"
+        android:layout_marginEnd="300dp"
         android:contentDescription="TODO"
         app:srcCompat="@drawable/logotecsup" />
 
@@ -30,12 +40,24 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="57dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="208dp"
+        android:layout_marginBottom="164dp"
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
-        android:src="@drawable/laboratorios"
-        app:srcCompat="@drawable/laboratorios"
+        android:src="@drawable/laboratorios1"
+        app:srcCompat="@drawable/laboratorios1"
         tools:ignore="UnknownId,ImageContrastCheck" />
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Cerrar Sesión"
+        android:onClick="cerrarSesion" />
+
 
     <Button
         android:layout_width="wrap_content"
@@ -45,7 +67,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="44dp"
         android:layout_marginEnd="29dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="103dp"
         android:onClick="irAReservaLaboratorios"
         android:text="@string/reserva_laboratorios" />
 
@@ -56,7 +78,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="358dp"
         android:layout_marginEnd="35dp"
         android:onClick="irAReservaPolideportivos"
         android:text="@string/reserva_polideportivos" />
@@ -69,14 +91,12 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="133dp"
+        android:layout_marginTop="185dp"
         android:layout_marginEnd="51dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/polideportivo"
-        app:srcCompat="@drawable/polideportivo"
+        android:src="@drawable/polideportivo1"
+        app:srcCompat="@drawable/polideportivo1"
         tools:ignore="UnknownId" />
-
-
 
     <ImageView
         android:id="@+id/logoId"
@@ -117,9 +137,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="167dp"
+        android:layout_marginStart="107dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="148dp"
+        android:layout_marginEnd="208dp"
         android:text="@string/tecsite"
         android:textSize="24sp" />
 

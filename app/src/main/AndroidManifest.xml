@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppTecsite"
         tools:targetApi="31">
         <activity
+            android:name=".MisReservasActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignInActivity"
             android:exported="true">
             <intent-filter>
@@ -26,11 +29,11 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"></activity>
         <activity android:name=".ReservaPolideportivosActivity" />
         <activity android:name=".ReservaLaboratoriosActivity" />
     </application>
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

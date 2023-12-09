@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Título "Mis Reservas" -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mis Reservas"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Tarjeta para mostrar los detalles de la reserva -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardReserva"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Campo para mostrar el tipo de reserva -->
+            <TextView
+                android:id="@+id/tvTipoReserva"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="Campo a reservar:" />
+
+            <!-- Campo para mostrar la fecha de reserva -->
+            <TextView
+                android:id="@+id/tvFechaReserva"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="Fecha de Reserva:" />
+
+            <!-- Campo para mostrar la hora de reserva -->
+            <TextView
+                android:id="@+id/tvHoraReserva"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="Hora de Reserva:" />
+
+            <!-- Campo para mostrar el código de estudiante -->
+            <TextView
+                android:id="@+id/tvCodigoEstudiante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="Código de Estudiante:" />
+
+            <!-- Campo para mostrar el número de DNI -->
+            <TextView
+                android:id="@+id/tvDNI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:text="Número de DNI:" />
+
+            <!-- Botón Cancelar Reserva -->
+            <Button
+                android:id="@+id/btnCancelarReserva"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancelar Reserva"
+                android:layout_marginTop="16dp" />
+
+            <!-- Botón Volver al Menú Principal -->
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnVolverMenuPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Volver al Menú Principal" />
+
+    </LinearLayout>
+
+</LinearLayout>
