@@ -1,5 +1,6 @@
 package com.apptecsite
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MisReservasActivity : AppCompatActivity() {
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_reservas)
@@ -21,21 +23,15 @@ class MisReservasActivity : AppCompatActivity() {
         val tipoReserva = sharedPreferences.getString("tipoReserva", "")
         val fecha = sharedPreferences.getString("fecha", "")
         val hora = sharedPreferences.getString("hora", "")
-        val codigoEstudiante = sharedPreferences.getString("codigoEstudiante", "")
-        val dni = sharedPreferences.getString("dni", "")
 
         // Mostrar los datos en los campos correspondientes de activity_mis_reservas.xml
         val tvTipoReserva: TextView = findViewById(R.id.tvTipoReserva)
         val tvFechaReserva: TextView = findViewById(R.id.tvFechaReserva)
         val tvHoraReserva: TextView = findViewById(R.id.tvHoraReserva)
-        val tvCodigoEstudiante: TextView = findViewById(R.id.tvCodigoEstudiante)
-        val tvDNI: TextView = findViewById(R.id.tvDNI)
 
         tvTipoReserva.text = "Campo a reservar: $tipoReserva"
         tvFechaReserva.text = "Fecha de Reserva: $fecha"
         tvHoraReserva.text = "Hora de Reserva: $hora"
-        tvCodigoEstudiante.text = "Código de Estudiante: $codigoEstudiante"
-        tvDNI.text = "Número de DNI: $dni"
 
         // Botón "Volver al Menú Principal"
         val btnVolverMenuPrincipal: Button = findViewById(R.id.btnVolverMenuPrincipal)

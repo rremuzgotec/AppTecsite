@@ -1,13 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/reserva_laboratorios"
-        android:textSize="24sp" />
-</RelativeLayout>
+        android:padding="16dp">
+
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reserva de Laboratorios"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"/>
+
+
+        <TextView
+            android:id="@+id/tvPregunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seleccione el laboratorio"
+            android:textSize="18sp"
+            android:layout_below="@id/tvTitulo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"/>
+
+
+        <RadioGroup
+            android:id="@+id/opcionesReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPregunta"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbLaboratorio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tecnología Digital" />
+
+            <RadioButton
+                android:id="@+id/rbLaboratorio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DPI" />
+
+            <RadioButton
+                android:id="@+id/rbLaboratorio3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FabLab" />
+        </RadioGroup>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/opcionesReserva"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de Reserva (dd/mm/yyyy)"
+                android:inputType="none"
+                android:focusable="false"
+                android:onClick="showDatePickerDialog"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <EditText
+            android:id="@+id/etHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hora de Reserva (HH:mm)"
+            android:inputType="none"
+            android:layout_below="@id/textInputLayoutFecha"
+            android:layout_marginTop="16dp"
+            android:onClick="showTimePickerDialog"/>
+
+        <Button
+            android:id="@+id/btnConfirmarReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirmar Reserva"
+            android:layout_below="@id/etHora"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"/>
+    </RelativeLayout>
+</ScrollView>
