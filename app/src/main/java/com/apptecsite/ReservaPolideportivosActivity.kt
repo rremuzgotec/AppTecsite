@@ -116,9 +116,9 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
 
         // Guardar los datos de reserva usando SharedPreferences
         val editor = sharedPreferences.edit()
-        editor.putString("tipoReserva", tipoReserva)
-        editor.putString("fecha", fecha)
-        editor.putString("hora", hora)
+        editor.putString("tipoReservaPolideportivo", tipoReserva)
+        editor.putString("fechaPolideportivo", fecha)
+        editor.putString("horaPolideportivo", hora)
         editor.apply()
 
         // Crear un Intent para enviar los datos a MisReservasActivity
