@@ -1,21 +1,28 @@
 package com.apptecsite
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class ReservaPolideportivosActivity : AppCompatActivity() {
 
-    private lateinit var etFecha: EditText
+    private lateinit var etFecha: TextInputEditText
     private lateinit var etHora: EditText
-    private lateinit var etCodigoEstudiante: EditText
-    private lateinit var etDNI: EditText
+
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +32,14 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
         // Asignar referencias a los elementos del XML
         etFecha = findViewById(R.id.etFecha)
         etHora = findViewById(R.id.etHora)
-        etCodigoEstudiante = findViewById(R.id.etCodigoEstudiante)
-        etDNI = findViewById(R.id.etDNI)
+
+
+        // Cambia el TextInputEditText de la fecha a un TextInputEditText y agrega un clic para mostrar el DatePickerDialog
+        etFecha.inputType = InputType.TYPE_NULL
+        etFecha.setOnClickListener { showDatePickerDialog() }
+
+        // Agrega un clic para mostrar el TimePickerDialog
+        etHora.setOnClickListener { showTimePickerDialog() }
 
         val btnConfirmarReserva: Button = findViewById(R.id.btnConfirmarReserva)
         btnConfirmarReserva.setOnClickListener {
@@ -37,21 +50,75 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("Reservas", Context.MODE_PRIVATE)
     }
 
+    private fun showDatePickerDialog() {
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                val selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month + 1, year)
+                etFecha.setText(selectedDate)
+            },
+            Calendar.getInstance().get(Calendar.YEAR),
+            Calendar.getInstance().get(Calendar.MONTH),
+            Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+    }
+
+    private fun showTimePickerDialog() {
+        val cal = Calendar.getInstance()
+        val horaActual = cal.get(Calendar.HOUR_OF_DAY)
+        val minutoActual = cal.get(Calendar.MINUTE)
+
+        // Definir los intervalos de horas deseados
+        val horasDeseadas = arrayOf("8:00-9:00", "9:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00")
+
+        val timePickerDialog = TimePickerDialog(
+            this,
+            TimePickerDialog.OnTimeSetListener { _, hora, minuto ->
+                onTimeSet(hora, minuto, horasDeseadas)
+            },
+            horaActual,
+            minutoActual,
+            false
+        )
+
+        timePickerDialog.show()
+    }
+
+    private fun onTimeSet(hora: Int, minuto: Int, horasDeseadas: Array<String>) {
+        // Obtener la hora seleccionada
+        val cal = Calendar.getInstance()
+        cal.set(Calendar.HOUR_OF_DAY, hora)
+        cal.set(Calendar.MINUTE, minuto)
+
+        // Formatear la hora de inicio y la hora de fin
+        val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val horaInicio = simpleDateFormat.format(cal.time)
+        cal.add(Calendar.HOUR, 1)  // Añadir una hora para obtener la hora de fin
+        val horaFin = simpleDateFormat.format(cal.time)
+
+        // Verificar si el rango de horas seleccionado está en la lista de horas deseadas
+        val rangoSeleccionado = "$horaInicio-$horaFin"
+        if (horasDeseadas.contains(rangoSeleccionado)) {
+            etHora.setText(rangoSeleccionado)
+        } else {
+            // Mostrar un mensaje de error si el rango de horas no está permitido
+            Toast.makeText(this, "Por favor, selecciona un rango de horas válido.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun confirmarReserva() {
         // Obteniendo los datos ingresados en el formulario
         val tipoReserva = obtenerTipoReservaSeleccionado()
         val fecha = obtenerFechaReserva()
         val hora = obtenerHoraReserva()
-        val codigoEstudiante = obtenerCodigoEstudiante()
-        val dni = obtenerNumeroDNI()
+
 
         // Guardar los datos de reserva usando SharedPreferences
         val editor = sharedPreferences.edit()
         editor.putString("tipoReserva", tipoReserva)
         editor.putString("fecha", fecha)
         editor.putString("hora", hora)
-        editor.putString("codigoEstudiante", codigoEstudiante)
-        editor.putString("dni", dni)
         editor.apply()
 
         // Crear un Intent para enviar los datos a MisReservasActivity
@@ -67,7 +134,7 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
     }
 
     private fun obtenerFechaReserva(): String {
-        // Obtener la fecha del EditText etFecha
+        // Obtener la fecha del TextInputEditText etFecha
         return etFecha.text.toString()
     }
 
@@ -75,14 +142,5 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
         // Obtener la hora del EditText etHora
         return etHora.text.toString()
     }
-
-    private fun obtenerCodigoEstudiante(): String {
-        // Obtener el código de estudiante del EditText etCodigoEstudiante
-        return etCodigoEstudiante.text.toString()
-    }
-
-    private fun obtenerNumeroDNI(): String {
-        // Obtener el número de DNI del EditText etDNI
-        return etDNI.text.toString()
-    }
 }
+

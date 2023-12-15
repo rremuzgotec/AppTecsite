@@ -1,6 +1,5 @@
 package com.apptecsite
 
-
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
@@ -23,8 +22,6 @@ class ReservaLaboratoriosActivity : AppCompatActivity() {
 
     private lateinit var etFecha: TextInputEditText
     private lateinit var etHora: EditText
-    private lateinit var etCodigoEstudiante: EditText
-    private lateinit var etDNI: EditText
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
