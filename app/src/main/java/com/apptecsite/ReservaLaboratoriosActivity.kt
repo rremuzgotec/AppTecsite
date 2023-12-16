@@ -103,15 +103,16 @@ class ReservaLaboratoriosActivity : AppCompatActivity() {
         }
     }
 
-    private fun confirmarReserva() {
-        val tipoReserva = obtenerTipoReservaSeleccionado()
-        val fecha = obtenerFechaReserva()
-        val hora = obtenerHoraReserva()
 
-        val editor = sharedPreferences.edit()
-        editor.putString("tipoReserva", tipoReserva)
-        editor.putString("fecha", fecha)
-        editor.putString("hora", hora)
+        private fun confirmarReserva() {
+            val tipoReserva = obtenerTipoReservaSeleccionado()
+            val fecha = obtenerFechaReserva()
+            val hora = obtenerHoraReserva()
+
+            val editor = sharedPreferences.edit()
+            editor.putString("tipoReservaLaboratorio", tipoReserva)
+            editor.putString("fechaLaboratorio", fecha)
+            editor.putString("horaLaboratorio", hora)
         editor.apply()
 
         val intent = Intent(this@ReservaLaboratoriosActivity, MisReservasActivity::class.java)

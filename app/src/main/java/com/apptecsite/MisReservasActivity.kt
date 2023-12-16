@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -16,52 +17,86 @@ class MisReservasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_reservas)
 
-        // Obtener una instancia de SharedPreferences
         val sharedPreferences = getSharedPreferences("Reservas", Context.MODE_PRIVATE)
 
-        // Recuperar los datos de reserva guardados en SharedPreferences
-        val tipoReserva = sharedPreferences.getString("tipoReserva", "")
-        val fecha = sharedPreferences.getString("fecha", "")
-        val hora = sharedPreferences.getString("hora", "")
+        val tipoReservaPolideportivo = sharedPreferences.getString("tipoReservaPolideportivo", "")
+        val fechaPolideportivo = sharedPreferences.getString("fechaPolideportivo", "")
+        val horaPolideportivo = sharedPreferences.getString("horaPolideportivo", "")
 
-        // Mostrar los datos en los campos correspondientes de activity_mis_reservas.xml
-        val tvTipoReserva: TextView = findViewById(R.id.tvTipoReserva)
-        val tvFechaReserva: TextView = findViewById(R.id.tvFechaReserva)
-        val tvHoraReserva: TextView = findViewById(R.id.tvHoraReserva)
+        val tipoReservaLaboratorio = sharedPreferences.getString("tipoReservaLaboratorio", "")
+        val fechaLaboratorio = sharedPreferences.getString("fechaLaboratorio", "")
+        val horaLaboratorio = sharedPreferences.getString("horaLaboratorio", "")
 
-        tvTipoReserva.text = "Campo a reservar: $tipoReserva"
-        tvFechaReserva.text = "Fecha de Reserva: $fecha"
-        tvHoraReserva.text = "Hora de Reserva: $hora"
+        Log.d("MisReservasActivity", "Tipo Reserva Polideportivo: $tipoReservaPolideportivo")
+        Log.d("MisReservasActivity", "Fecha Reserva Polideportivo: $fechaPolideportivo")
+        Log.d("MisReservasActivity", "Hora Reserva Polideportivo: $horaPolideportivo")
+        Log.d("MisReservasActivity", "Tipo Reserva Laboratorio: $tipoReservaLaboratorio")
+        Log.d("MisReservasActivity", "Fecha Reserva Laboratorio: $fechaLaboratorio")
+        Log.d("MisReservasActivity", "Hora Reserva Laboratorio: $horaLaboratorio")
 
-        // Botón "Volver al Menú Principal"
-        val btnVolverMenuPrincipal: Button = findViewById(R.id.btnVolverMenuPrincipal)
-        btnVolverMenuPrincipal.setOnClickListener {
-            // Crear un Intent para abrir MainActivity
-            val intent = Intent(this@MisReservasActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish() // Finaliza la actividad actual para evitar volver a ella al presionar "Atrás"
+        val tvTipoReservaPolideportivo: TextView = findViewById(R.id.tvTipoReservaPolideportivo)
+        val tvFechaReservaPolideportivo: TextView = findViewById(R.id.tvFechaReservaPolideportivo)
+        val tvHoraReservaPolideportivo: TextView = findViewById(R.id.tvHoraReservaPolideportivo)
+
+        val tvTipoReservaLaboratorio: TextView = findViewById(R.id.tvTipoReservaLaboratorio)
+        val tvFechaReservaLaboratorio: TextView = findViewById(R.id.tvFechaReservaLaboratorio)
+        val tvHoraReservaLaboratorio: TextView = findViewById(R.id.tvHoraReservaLaboratorio)
+
+        if (!tipoReservaPolideportivo.isNullOrEmpty()) {
+            tvTipoReservaPolideportivo.text =
+                "Campo a reservar (Polideportivo): $tipoReservaPolideportivo"
+            tvFechaReservaPolideportivo.text = "Fecha de Reserva: $fechaPolideportivo"
+            tvHoraReservaPolideportivo.text = "Hora de Reserva: $horaPolideportivo"
+        } else {
+            tvTipoReservaPolideportivo.visibility = View.GONE
+            tvFechaReservaPolideportivo.visibility = View.GONE
+            tvHoraReservaPolideportivo.visibility = View.GONE
         }
 
-        // Botón "Cancelar Reserva"
-        val btnCancelarReserva: Button = findViewById(R.id.btnCancelarReserva)
-
-        // Verificar si hay reserva
-        if (tipoReserva.isNullOrEmpty()) {
-            // Si no hay reserva, ocultar el botón de Cancelar Reserva
-            btnCancelarReserva.visibility = View.GONE
+        if (!tipoReservaLaboratorio.isNullOrEmpty()) {
+            tvTipoReservaLaboratorio.text =
+                "Campo a reservar (Laboratorio): $tipoReservaLaboratorio"
+            tvFechaReservaLaboratorio.text = "Fecha de Reserva: $fechaLaboratorio"
+            tvHoraReservaLaboratorio.text = "Hora de Reserva: $horaLaboratorio"
         } else {
-            // Si hay una reserva, mostrar el botón de Cancelar Reserva
-            btnCancelarReserva.visibility = View.VISIBLE
-            btnCancelarReserva.setOnClickListener {
-                // Aquí pondrías la lógica para cancelar la reserva
-                // Por ejemplo, eliminar los datos de reserva en SharedPreferences
-                sharedPreferences.edit().clear().apply()
+            tvTipoReservaLaboratorio.visibility = View.GONE
+            tvFechaReservaLaboratorio.visibility = View.GONE
+            tvHoraReservaLaboratorio.visibility = View.GONE
+        }
 
-                // Luego, ir a la actividad MainActivity
-                val intent = Intent(this@MisReservasActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish() // Finaliza la actividad actual
+        val btnVolverMenuPrincipal: Button = findViewById(R.id.btnVolverMenuPrincipal)
+        btnVolverMenuPrincipal.setOnClickListener {
+
+            val intent = Intent(this@MisReservasActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val btnCancelarReservasPolideportivo: Button =
+            findViewById(R.id.btnCancelarReservaPolideportivo)
+        val btnCancelarReservasLaboratorio: Button =
+            findViewById(R.id.btnCancelarReservaLaboratorio)
+
+        if (!tipoReservaPolideportivo.isNullOrEmpty()) {
+            btnCancelarReservasPolideportivo.visibility = View.VISIBLE
+            btnCancelarReservasPolideportivo.setOnClickListener {
+
+                sharedPreferences.edit().remove("tipoReservaPolideportivo").apply()
+                recreate()
             }
+        } else {
+            btnCancelarReservasPolideportivo.visibility = View.GONE
+        }
+
+        if (!tipoReservaLaboratorio.isNullOrEmpty()) {
+            btnCancelarReservasLaboratorio.visibility = View.VISIBLE
+            btnCancelarReservasLaboratorio.setOnClickListener {
+
+                sharedPreferences.edit().remove("tipoReservaLaboratorio").apply()
+                recreate()
+            }
+        } else {
+            btnCancelarReservasLaboratorio.visibility = View.GONE
         }
     }
 }
