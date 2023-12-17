@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/imageView"
-        android:layout_marginTop="20p"
+        android:layout_marginTop="20dp"
         android:text="Mis Reservas"
         android:onClick="irAMisReservas" />
 
@@ -39,9 +39,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="57dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="146dp"
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
         android:src="@drawable/laboratorios1"
@@ -54,8 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="40dp"
         android:text="Cerrar Sesión"
         android:onClick="cerrarSesion" />
 
@@ -68,7 +68,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="44dp"
         android:layout_marginEnd="29dp"
-        android:layout_marginBottom="103dp"
+        android:layout_marginBottom="77dp"
         android:onClick="irAReservaLaboratorios"
         android:text="@string/reserva_laboratorios" />
 
@@ -79,10 +79,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="358dp"
+        android:layout_marginTop="359dp"
         android:layout_marginEnd="35dp"
         android:onClick="irAReservaPolideportivos"
         android:text="@string/reserva_polideportivos" />
+
 
     <ImageView
         android:id="@+id/imagenLaboratoriosId"
@@ -92,22 +93,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="195dp"
         android:layout_marginEnd="51dp"
         android:scaleType="centerCrop"
         android:src="@drawable/polideportivo1"
         app:srcCompat="@drawable/polideportivo1"
-        tools:ignore="UnknownId" />
-
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="77dp"
-        android:background="@drawable/sombreado_linea"
-        android:padding="8dp"
         tools:ignore="UnknownId" />
 
 </RelativeLayout>
