@@ -29,16 +29,13 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reserva_polideportivos)
 
-        // Asignar referencias a los elementos del XML
         etFecha = findViewById(R.id.etFecha)
         etHora = findViewById(R.id.etHora)
 
 
-        // Cambia el TextInputEditText de la fecha a un TextInputEditText y agrega un clic para mostrar el DatePickerDialog
         etFecha.inputType = InputType.TYPE_NULL
         etFecha.setOnClickListener { showDatePickerDialog() }
 
-        // Agrega un clic para mostrar el TimePickerDialog
         etHora.setOnClickListener { showTimePickerDialog() }
 
         val btnConfirmarReserva: Button = findViewById(R.id.btnConfirmarReserva)
@@ -46,7 +43,6 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
             confirmarReserva()
         }
 
-        // Obtener la instancia de SharedPreferences
         sharedPreferences = getSharedPreferences("Reservas", Context.MODE_PRIVATE)
     }
 
@@ -69,7 +65,7 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
         val horaActual = cal.get(Calendar.HOUR_OF_DAY)
         val minutoActual = cal.get(Calendar.MINUTE)
 
-        // Definir los intervalos de horas deseados
+        // Horas
         val horasDeseadas = arrayOf("8:00-9:00", "9:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00")
 
         val timePickerDialog = TimePickerDialog(
@@ -86,60 +82,50 @@ class ReservaPolideportivosActivity : AppCompatActivity() {
     }
 
     private fun onTimeSet(hora: Int, minuto: Int, horasDeseadas: Array<String>) {
-        // Obtener la hora seleccionada
         val cal = Calendar.getInstance()
         cal.set(Calendar.HOUR_OF_DAY, hora)
         cal.set(Calendar.MINUTE, minuto)
 
-        // Formatear la hora de inicio y la hora de fin
         val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
         val horaInicio = simpleDateFormat.format(cal.time)
-        cal.add(Calendar.HOUR, 1)  // Añadir una hora para obtener la hora de fin
+        cal.add(Calendar.HOUR, 1)
         val horaFin = simpleDateFormat.format(cal.time)
 
-        // Verificar si el rango de horas seleccionado está en la lista de horas deseadas
         val rangoSeleccionado = "$horaInicio-$horaFin"
         if (horasDeseadas.contains(rangoSeleccionado)) {
             etHora.setText(rangoSeleccionado)
         } else {
-            // Mostrar un mensaje de error si el rango de horas no está permitido
             Toast.makeText(this, "Por favor, selecciona un rango de horas válido.", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun confirmarReserva() {
-        // Obteniendo los datos ingresados en el formulario
         val tipoReserva = obtenerTipoReservaSeleccionado()
         val fecha = obtenerFechaReserva()
         val hora = obtenerHoraReserva()
 
 
-        // Guardar los datos de reserva usando SharedPreferences
         val editor = sharedPreferences.edit()
         editor.putString("tipoReservaPolideportivo", tipoReserva)
         editor.putString("fechaPolideportivo", fecha)
         editor.putString("horaPolideportivo", hora)
         editor.apply()
 
-        // Crear un Intent para enviar los datos a MisReservasActivity
         val intent = Intent(this@ReservaPolideportivosActivity, MisReservasActivity::class.java)
         startActivity(intent)
     }
 
     private fun obtenerTipoReservaSeleccionado(): String {
-        // Lógica para obtener el tipo de reserva seleccionado (RadioButton seleccionado)
         val opcionesReserva: RadioGroup = findViewById(R.id.opcionesReserva)
         val radioButtonSeleccionado: RadioButton = findViewById(opcionesReserva.checkedRadioButtonId)
         return radioButtonSeleccionado.text.toString()
     }
 
     private fun obtenerFechaReserva(): String {
-        // Obtener la fecha del TextInputEditText etFecha
         return etFecha.text.toString()
     }
 
     private fun obtenerHoraReserva(): String {
-        // Obtener la hora del EditText etHora
         return etHora.text.toString()
     }
 }

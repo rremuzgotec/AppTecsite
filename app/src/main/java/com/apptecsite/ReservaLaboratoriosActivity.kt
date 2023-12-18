@@ -31,11 +31,9 @@ class ReservaLaboratoriosActivity : AppCompatActivity() {
         etFecha = findViewById(R.id.etFecha)
         etHora = findViewById(R.id.etHora)
 
-        // Cambia el EditText de la fecha a un TextInputEditText y agrega un clic para mostrar el DatePickerDialog
         etFecha.inputType = InputType.TYPE_NULL
         etFecha.setOnClickListener { showDatePickerDialog() }
 
-        // Agrega un clic para mostrar el TimePickerDialog
         etHora.setOnClickListener { showTimePickerDialog() }
 
         val btnConfirmarReserva: Button = findViewById(R.id.btnConfirmarReserva)
@@ -65,7 +63,7 @@ class ReservaLaboratoriosActivity : AppCompatActivity() {
         val horaActual = cal.get(Calendar.HOUR_OF_DAY)
         val minutoActual = cal.get(Calendar.MINUTE)
 
-        // Definir los intervalos de horas deseados
+        // Horas
         val horasDeseadas = arrayOf("8:00-9:00", "9:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00")
 
         val timePickerDialog = TimePickerDialog(
@@ -82,23 +80,19 @@ class ReservaLaboratoriosActivity : AppCompatActivity() {
     }
 
     private fun onTimeSet(hora: Int, minuto: Int, horasDeseadas: Array<String>) {
-        // Obtener la hora seleccionada
         val cal = Calendar.getInstance()
         cal.set(Calendar.HOUR_OF_DAY, hora)
         cal.set(Calendar.MINUTE, minuto)
 
-        // Formatear la hora de inicio y la hora de fin
         val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
         val horaInicio = simpleDateFormat.format(cal.time)
-        cal.add(Calendar.HOUR, 1)  // Añadir una hora para obtener la hora de fin
+        cal.add(Calendar.HOUR, 1)
         val horaFin = simpleDateFormat.format(cal.time)
 
-        // Verificar si el rango de horas seleccionado está en la lista de horas deseadas
         val rangoSeleccionado = "$horaInicio-$horaFin"
         if (horasDeseadas.contains(rangoSeleccionado)) {
             etHora.setText(rangoSeleccionado)
         } else {
-            // Mostrar un mensaje de error si el rango de horas no está permitido
             Toast.makeText(this, "Por favor, selecciona un rango de horas válido.", Toast.LENGTH_SHORT).show()
         }
     }

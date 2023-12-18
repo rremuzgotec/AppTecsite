@@ -25,3 +25,7 @@ b
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
 D
 app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
+Å
+Q.idea/sonarlint/securityhotspotstore/d/2/d2a4383452aad84a18429a5844d31330a012a9e6,7\f\7fcac164c7a46b8fc6411ea93226c884af6044db
+w
+G.idea/sonarlint/issuestore/d/2/d2a4383452aad84a18429a5844d31330a012a9e6,4\1\41d94d542eb07930019955e360e3288fdff2668b
